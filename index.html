@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Decision FC · how the game works</title>
+<meta name="description" content="Decision FC is a free football career game for phones and browsers. This page explains how its randomness is designed and how it is tested.">
+<meta name="author" content="Davies Luo">
+<meta name="theme-color" content="#070a09">
+<link rel="icon" href="assets/img/icon.jpg">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Decision FC · how the game works">
+<meta property="og:description" content="A football career in a few minutes. How the game is designed and how it is tested.">
+<meta property="og:url" content="https://daviesluo.github.io/decision-fc/">
+<meta property="og:image" content="https://daviesluo.github.io/decision-fc/assets/img/social.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" href="assets/fonts/barlow-500.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/barlow-condensed-700.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="bar">
+  <div class="wrap">
+    <span class="mark">DECISION FC</span>
+    <nav>
+      <a href="#play">The game</a>
+      <a href="#design">Design</a>
+      <a href="#odds">The odds</a>
+      <a href="#tests">The tests</a>
+      <a class="play" href="https://decisionfc.com">Play</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<div class="wrap hero">
+  <h1>A football career<br>in a few minutes</h1>
+  <p class="lead">Decision FC is a free game for phones and browsers, in English and Chinese. You play one footballer from sixteen to retirement, one decision at a time, and the game plays out every season in between.</p>
+  <div class="buttons">
+    <a class="btn primary" href="https://decisionfc.com">Play at decisionfc.com</a>
+    <a class="btn" href="#odds">How the odds work</a>
+  </div>
+  <p class="note">This page is my write-up of how the game is designed and tested. The code is on <a href="https://github.com/daviesluo/decision-fc">GitHub</a>.</p>
+  <div class="shot-hero">
+    <img src="assets/img/hero.webp" width="2191" height="1520" alt="Three screens from the game: the start screen with its pace picker, a training card that prints 70% and 30% odds, and a career table beside a boot-deal offer that prints 60% and 40% odds">
+  </div>
+</div>
+
+<section id="play">
+  <div class="wrap">
+    <p class="label">The game</p>
+    <h2>What you decide</h2>
+    <div class="text">
+      <p>Decisions come one card at a time, each with two or three options: which academy to join, which club to sign for, whether to go out on loan for a season, whether to take a gamble. A club offer trades wage against playing time and the club's standing. A gamble prints its odds on the card.</p>
+      <p>Between cards the game plays the season: appearances, goals, injuries, trophies, wages and market value. A career takes about 4, 6 or 11 minutes, depending on the pace you pick. There are three leaderboards, for achievements, career earnings and peak market value, and a daily challenge in which everyone plays the same world and is ranked on its own board.</p>
+    </div>
+    <div class="shots">
+      <figure><img src="assets/img/1-start.webp" width="600" height="1304" loading="lazy" alt="Start screen with Quick, Standard and Deep paces"><figcaption>Pick a pace</figcaption></figure>
+      <figure><img src="assets/img/2-identity.webp" width="600" height="1304" loading="lazy" alt="Player builder: name, number, nationality, position and player type"><figcaption>Build your player</figcaption></figure>
+      <figure><img src="assets/img/4-offer.webp" width="600" height="1304" loading="lazy" alt="A contract renewal against two transfer offers, each with wage, length and bonus"><figcaption>Choose between offers</figcaption></figure>
+      <figure><img src="assets/img/5-odds.webp" width="600" height="1304" loading="lazy" alt="Extra training card: 70% chance of +3 ability, 30% chance of −2"><figcaption>The odds are on the card</figcaption></figure>
+      <figure><img src="assets/img/6-career.webp" width="600" height="1304" loading="lazy" alt="Ten seasons in a career table, with a boot-deal gamble at 60% and 40%"><figcaption>The career so far</figcaption></figure>
+    </div>
+    <div class="text" style="margin-top: 40px">
+      <p class="dim">Every card, rule and ending is written in both languages.</p>
+    </div>
+    <div class="pair">
+      <img src="assets/img/zh-5-odds.webp" width="600" height="1304" loading="lazy" alt="A training card in Chinese with 70% and 30% odds">
+      <img src="assets/img/zh-6-career.webp" width="600" height="1304" loading="lazy" alt="A career table in Chinese with a 60% and 40% boot-deal gamble">
+    </div>
+  </div>
+</section>
+
+<section id="design">
+  <div class="wrap">
+    <p class="label">Design</p>
+    <h2>The rules I set</h2>
+    <div class="text">
+      <p>The game is a career told through choices, and its rules decide whether those choices mean anything. Most of the rules below came out of playing it and writing down what felt wrong.</p>
+    </div>
+    <ol class="rules">
+      <li><strong>A football world that makes sense.</strong> The clubs are ones people know: the top two divisions in England, Spain, Italy, Germany and France, the top division in Portugal, the Netherlands and Belgium, and four leagues further away, in Saudi Arabia, the US, Japan and China, as a high-wage lure or a place to wind down. There are no South American clubs, because few players would know them. The options on one card sit at about the same level.</li>
+      <li><strong>Every downside in plain view.</strong> Each option prints its odds, its concrete effect, the reason behind every downside and what it costs in money. The build fails on any downside that does not give its reason, in either language.</li>
+      <li><strong>Every card is a real decision.</strong> An option with only upside is not a choice, and neither is one with only risk. A script prices every option in the deck. A transfer window drops an offer that another beats on the club's standing, the role and the wage at once, unless that would leave the card short. Cards carrying such an offer fell from 30% to 15%.</li>
+      <li><strong>One screen, plain words.</strong> Nothing scrolls. The cards sit at the bottom, where your thumb is, and the career sits at the top. The text says things the way a person would, one point to a sentence.</li>
+      <li><strong>Pace should change the length and nothing else.</strong> Quick deals a card every two seasons, Standard one a season and Deep two. Each card's effect is scaled to the rate, so a +4 counts for less on Deep. It is close but not exact. Deep still ends about 1.4 points ahead of Standard on peak ability, and 7.6% ahead on the median achievements score.</li>
+      <li><strong>Ability decides where you stand.</strong> A good season or a lucky card can lift you one rung above what your ability has earned, and no further.</li>
+    </ol>
+  </div>
+</section>
+
+<section id="fit">
+  <div class="wrap">
+    <p class="label">The main decision</p>
+    <h2>A bigger club, or a place in the team</h2>
+    <div class="text">
+      <p>The game is built around one question: sign for the bigger club, or go where you will play. Your role in the squad, six rungs from fringe player to star, decides how often you play, and your ability decides the role. Every manager plays one of six styles: high press, possession, counter-attack, deep defence, wing play or free to roam. How well your attributes suit his style moves your effective ability by up to about 12%, which is often the difference between starting and sitting on the bench.</p>
+      <p>The offer card names each manager's style but does not say whether it suits you. That is on purpose. Reading it is the player's call, and How to Play explains what each style asks for. In return, every transfer window has at least one option whose football suits you.</p>
+      <p>In September a test that plays the same 400 starting worlds five ways found that always signing for the biggest club beat reading the role, so the main decision had a textbook answer. Two rules caused it, and neither is how football works. A trophy counted the same for a fringe player as for the captain who played every game. And a sixteen-year-old on a giant's bench developed as fast as one playing every week somewhere smaller. Now a trophy is worth more to the player who played for it, and not playing slows your development at every age. Going as high as you can while still playing now beats always signing for the biggest club on all three leaderboards: 1,991 to 1,959 on the median achievements score, €118.6M to €103.2M in earnings and €41.0M to €40.0M in peak market value.</p>
+      <p class="dim">The fix has a price. Fewer careers now peak at 90 or above, 5.0% instead of 6.5%, because a player on the bench no longer develops for free.</p>
+    </div>
+  </div>
+</section>
+
+<section id="odds">
+  <div class="wrap">
+    <p class="label">The odds</p>
+    <h2>How the randomness works</h2>
+    <div class="text">
+      <p>Under the cards is a simulator, and every career can be replayed exactly.</p>
+    </div>
+
+    <div class="grid">
+      <div class="card wide">
+        <h3>Every career can be replayed</h3>
+        <p>Nothing in the engine calls <code>Math.random</code> or reads the clock, so the same seed, the same player and the same choices always give the same career. The dice are split into named streams, about thirty kinds in all: a season's stats, injuries, trophies, the result of a card. Each is a small generator (mulberry32) seeded from the career's seed and the stream's name. A new draw in one stream never shifts another, so a change to one system only moves what it touches.</p>
+        <p>The leaderboards rely on replay. The server replays every submitted career and rejects any that does not come out the same. That stops forged scores. It does not stop a player replaying one world until a career they like comes up.</p>
+      </div>
+
+      <div class="card">
+        <h3>A trophy is a share of the field</h3>
+        <p>This one started with a complaint of mine. Brighton and Aston Villa, who have never won the Premier League, kept winning it. Now each club has a strength <em>s</em>, its reputation less 34 and at least 1, and its chance of winning a competition is <em>s</em> to a power <em>k</em>, divided by the same sum over every club in it.</p>
+        <p class="formula">P(win) = s<sup>k</sup> / Σ s<sup>k</sup></p>
+        <p>Before anything else touches them, the shares add up to one, so the world hands out about one title per competition a season. Between two clubs in the same division, the odds differ by their strength ratio to the power <em>k</em>. A club 10% stronger is 1.77 times as likely to win the league, where <em>k</em> is 6, but only 1.21 times as likely to win the cup, where it is 2.</p>
+        <p>The cup's <em>k</em> was tuned against the real record of England's knockout cup. For the league, even <em>k</em> = 6 left mid-table sides with 5% of titles, against under 1% in real football since 1990, so a club's place in the table also caps its chance. A star player lifts his club's chance a little.</p>
+        <table class="table">
+          <thead><tr><th>Competition</th><th class="num">k</th></tr></thead>
+          <tbody>
+            <tr><td>League</td><td class="num">6</td></tr>
+            <tr><td>Continental cup</td><td class="num">5</td></tr>
+            <tr><td>National cup</td><td class="num">2</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card">
+        <h3>Goals are Poisson, with form on top</h3>
+        <p>A season's goals follow a Poisson distribution. The expected number is multiplied by a form factor drawn once a season, centred on 1. A consistent player's form moves a little and an inconsistent player's moves a lot. So consistency changes how far a season can stray, and the average stays the same.</p>
+        <table class="table">
+          <thead><tr><th>20 goals expected</th><th class="num">Average</th><th class="num">9 seasons in 10</th></tr></thead>
+          <tbody>
+            <tr><td>No form swings (plain Poisson)</td><td class="num">20</td><td class="num">13 to 28</td></tr>
+            <tr><td>The most consistent player</td><td class="num">20</td><td class="num">12 to 28</td></tr>
+            <tr><td>The least consistent player</td><td class="num">20</td><td class="num">10 to 32</td></tr>
+          </tbody>
+        </table>
+        <p class="dim">From two million simulated seasons each, with the game's own form model.</p>
+      </div>
+
+      <div class="card wide">
+        <h3>Everything else</h3>
+        <p><strong>Growth</strong> comes in two-year cycles, drawn by age and by talent profile (early, normal or late developer), then scaled by coaching, form, minutes played, staff and lifestyle, within fixed bounds. Decline is never amplified. <strong>Injuries</strong> have a seasonal risk set by age and by how injury-prone the player is. The type is drawn by weight and the time out from that type's range. Of the options on the cards, <strong>41 are gambles</strong> with their odds printed on them, from 30% to 80%, each settled on its own stream.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="tests">
+  <div class="wrap">
+    <p class="label">The tests</p>
+    <h2>How it is checked</h2>
+    <div class="text">
+      <p>About 25,000 simulated careers run on every push to main. If a checked number leaves its band, the run fails.</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h3>The odds on the cards</h3>
+        <p>Over 2,500 simulated careers, every gamble chosen at least 80 times is checked. The check fails if its realised rate is more than four standard errors from the number printed on the card. Four rather than three because 36 gambles are checked at once, and at three a correct build failed too often to trust. All 36 pass.</p>
+      </div>
+
+      <div class="card">
+        <h3>Skill against luck</h3>
+        <p>I did not want a luck game, so I asked how the game made choices count and what the data showed. The answer is a test that plays five fixed strategies on the same 1,600 starting worlds. Choice is the gap between the best and the worst strategy on the same world, at its median across worlds. Luck is the spread of one strategy across worlds, from the 10th to the 90th percentile. On the achievements score that is 1,339 points against 3,182, so choice is about 30% of the range a player sees. The best strategy beats random play on 70% of worlds, and the build fails if choice drops below 22%.</p>
+        <p>A review I commissioned set 40% as the target. It reads 30%. Getting further would mean punishing bad decisions much harder or making careers more alike.</p>
+      </div>
+
+      <div class="card wide">
+        <h3>Every option does what it says</h3>
+        <p>A player found a bug that no test had caught. On the card at the end of a loan, which then had four options, three did not do what they said. Choosing Lyon, twice, sent the footballer straight back to his old club. Nothing crashed and every option was well formed. No test covered that branch, because nobody had thought to write one.</p>
+        <p>So this check does not depend on anyone thinking of the case. On every push, every option of every card in 83 simulated careers is applied to a copy of the career. An option that names a club has to put you there, and one that prints a wage or a contract length has to deliver at least that. A second sweep of 250 careers checks that every card has two or three different options and every transfer window has a club to join. The latest run applied 6,552 options and checked 8,625 cards, and all passed.</p>
+      </div>
+
+      <div class="card wide">
+        <h3>The numbers I hold it to</h3>
+        <p>Most of these came from playing it. Ratings once peaked too low for a player to reach a big club, players peaked at 26, and a 34-year-old rated 82 retired out of nowhere. Each became a target. The figures come from 20,000 simulated careers played with random choices. The build checks the ratings and the retirement age on every push, and the peak age is measured but not yet checked. One target is missed, and the table says so.</p>
+        <table class="table">
+          <thead><tr><th>Check</th><th class="num">Target</th><th class="num">Now</th></tr></thead>
+          <tbody>
+            <tr><td>Median peak rating</td><td class="num">79 to 83</td><td class="num ok">81</td></tr>
+            <tr><td>Careers that peak at 90 or above</td><td class="num">3% to 8%</td><td class="num ok">5.0%</td></tr>
+            <tr><td>Median age at peak</td><td class="num">26 to 30</td><td class="num ok">28</td></tr>
+            <tr><td>Retirement age</td><td class="num">35 or later</td><td class="num ok">earliest 35, median 37</td></tr>
+            <tr><td>Endings no career can reach</td><td class="num">none</td><td class="num ok">0 of 25</td></tr>
+            <tr><td>The two most common endings, together</td><td class="num">30% at most</td><td class="num miss">33.8%</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card">
+        <h3>A fair start</h3>
+        <p>Whatever you pick at the start, the comparison at the end should be fair. Positions were the hard part. At first a striker scored twice what a centre-back did on the same starting worlds, because goals earned points and tackles did not. Now each position's output is scored against what a typical career in that shirt produces.</p>
+        <p>The best position's median score was once 101% above the worst's. It is 37% on the 250 careers a position the build plays (46% on 1,000), and the build fails above 60%. Some of what is left is football, because goals win most of the awards. Some is my call. I cut Defender and Playmaker of the Season, so a holding midfielder or a defender has no award of his own.</p>
+      </div>
+
+      <div class="card">
+        <h3>Playtesting through the real screen</h3>
+        <p>I play the previews on my phone and send back numbered lists of what is wrong. A browser script does the same at scale, playing whole careers on a phone-sized screen and tapping cards like a player: two languages, four modes and four player profiles, 32 combinations in all. It fails on what a machine can judge, such as a placeholder left in the text, an untranslated word, text cut off by its own box or a console error.</p>
+        <p>Through a test hook it also checks the career data behind the screen: ages that count one by one, no appearances in a banned season, no keeper scoring for his country, and career goals that add up to the seasons. One full sweep of 3,200 careers turned up a goalkeeper with four assists in a season, so a keeper's assists are now capped at two. It also writes down every card it was shown, so I can read the words the way a player does.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="built">
+  <div class="wrap">
+    <p class="label">Under the hood</p>
+    <h2>What it runs on</h2>
+    <dl class="stack">
+      <dt>How it's made</dt><dd>I set the rules and the targets, play the previews and make the calls.</dd>
+      <dt>Engine</dt><dd>Plain TypeScript. The linter rejects the DOM, the clock and <code>Math.random</code> inside it, and a test plays careers with the clock and <code>Math.random</code> set to throw.</dd>
+      <dt>App</dt><dd>React 19, Vite and Tailwind. It installs on a phone and works offline.</dd>
+      <dt>Leaderboards</dt><dd>A Supabase function replays each submitted career through a hash-pinned copy of the engine. Postgres with row-level security and rate limits.</dd>
+      <dt>Hosting</dt><dd>Cloudflare. Only the minified build is published.</dd>
+      <dt>Checks</dt><dd>GitHub Actions on every push to main: types, lint, unit tests, the build, the app at phone and desktop sizes, and the simulation checks. The same push deploys the site, and a live check confirms it is serving the new build.</dd>
+    </dl>
+  </div>
+</section>
+
+<section id="ads">
+  <div class="wrap">
+    <p class="label">Ads</p>
+    <h2>One ad, and only between careers</h2>
+    <div class="text">
+      <p>The only ad is a rewarded one, shown before a replay. Your first replay each day is free. After that the ads get longer, 5, 10, 15, 20 and then 30 seconds, and anything over five seconds can be skipped halfway. The replay is never held back, not even when the network fails. Nothing interrupts a career in progress, and walking away from one is never behind an ad. On a computer the game's ad screen sits in the middle of the window, and a check fails the build if it covers more than a third of it.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Made by <a href="https://github.com/daviesluo">Davies Luo</a>. Play it at <a href="https://decisionfc.com">decisionfc.com</a>.</p>
+  </div>
+</footer>
+
+</body>
+</html>
