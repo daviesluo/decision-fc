@@ -1,0 +1,33 @@
+{
+  // Cloudflare Workers config — static-asset hosting for the web app.
+  //
+  // THIS is the live host: decisionfc.com is served by the worker named below.
+  // Connect the repo under Cloudflare dashboard → Workers & Pages → Create →
+  // import this Git repository. Build command: `pnpm --filter @bg/web build`.
+  // Every push then deploys.
+  //
+  // Local deploys work too: `pnpm --filter @bg/web build && npx wrangler deploy`
+  // (needs `wrangler login` or CLOUDFLARE_API_TOKEN).
+  "$schema": "node_modules/wrangler/config-schema.json",
+  // Deliberately still the old project name. This is not a label — it is the
+  // live worker's identity, and the custom domain is bound to it. Renaming it
+  // here does not rename the worker: the next deploy would create a second,
+  // empty one called `decision-fc` while decisionfc.com kept pointing at this
+  // one. Renaming for real means creating the new worker, moving the domain,
+  // and deleting the old — a dashboard operation, not a commit.
+  "name": "football-career",
+  "compatibility_date": "2026-07-01",
+  "assets": {
+    "directory": "apps/web/dist",
+    // What makes /zh and /football-career-games serve their prerendered files
+    // rather than falling through to the app shell. With `auto-trailing-slash`
+    // a request for /zh resolves /zh/index.html; without it the SPA fallback
+    // answers, and a crawler asking for the Chinese page receives the English
+    // one — which is exactly what `vite preview` does, and why tools/seo.mjs
+    // fetches the slashed form locally. Declared rather than left to the
+    // default, because the whole bilingual indexing story depends on it.
+    "html_handling": "auto-trailing-slash",
+    // The game is a single-page app; unknown paths fall through to index.html.
+    "not_found_handling": "single-page-application"
+  }
+}

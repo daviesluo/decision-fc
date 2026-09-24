@@ -1,0 +1,49 @@
+{
+  "name": "decision-fc",
+  "private": true,
+  "version": "0.1.0",
+  "description": "A football career game for phones and computers: twenty seasons, one decision at a time.",
+  "packageManager": "pnpm@10.33.0",
+  "engines": {
+    "node": "^20.19.0 || >=22.12.0"
+  },
+  "scripts": {
+    "dev": "pnpm --filter @bg/web dev",
+    "build": "pnpm --filter @bg/engine build && pnpm --filter @bg/content build && pnpm --filter @bg/web build",
+    "build:itch": "pnpm --filter @bg/engine build && pnpm --filter @bg/content build && pnpm --filter @bg/web build:itch",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "eslint .",
+    "typecheck": "pnpm -r --if-present typecheck",
+    "balance": "tsx tools/balance.ts",
+    "market": "tsx tools/market.ts",
+    "skill": "tsx tools/skill.ts",
+    "fairness": "tsx tools/fairness.ts",
+    "deck": "tsx tools/deck.ts",
+    "plausibility": "tsx tools/plausibility.ts",
+    "seed:boards": "tsx tools/seed-boards.ts",
+    "par": "tsx tools/fairness.ts --par",
+    "seo": "node tools/seo.mjs",
+    "playtest": "node tools/playtest.mjs",
+    "verify:ui": "node tools/verify-ui.mjs",
+    "verify:desktop": "node tools/verify-ui.mjs --desktop",
+    "verify:no-leak": "node tools/verify-no-source-leak.mjs",
+    "verify:artwork": "node tools/verify-artwork.mjs",
+    "verify:itch": "tsx tools/verify-itch-fresh.ts",
+    "verify:live": "tsx tools/verify-live.ts",
+    "preview": "pnpm --filter @bg/web exec vite preview --port 4173 --host 127.0.0.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^26.6.1",
+    "esbuild": "^0.28.2",
+    "eslint": "^10.10.0",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "globals": "^17.12.0",
+    "playwright": "^1.63.0",
+    "tsx": "^4.23.13",
+    "typescript": "^5.7.2",
+    "typescript-eslint": "^8.70.0",
+    "vitest": "^5.0.1"
+  }
+}

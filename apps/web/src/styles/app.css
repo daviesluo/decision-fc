@@ -1,0 +1,474 @@
+@import 'tailwindcss';
+
+/**
+ * Design language.
+ *
+ * Reference points are broadcast graphics and matchday programmes, not
+ * developer tooling: condensed type, hard-edged panels, club colour used as
+ * colour rather than decoration, and numbers set like a scoreboard. The
+ * previous pass read as a terminal with a green accent, which is a fine way to
+ * present data and a poor way to present football.
+ *
+ * Layout rule that overrides everything else: a screen never scrolls. Status at
+ * the top, what just happened in the middle, the decision at the bottom under
+ * the thumb.
+ */
+
+/* Self-hosted, SIL OFL. Not loaded from Google — that host is unreachable in
+   mainland China, which is half the audience. 48 kB for all four faces. */
+@font-face {
+  font-family: 'BarlowCond';
+  src: url('/fonts/barlow-condensed-600.woff2') format('woff2');
+  font-weight: 600;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'BarlowCond';
+  src: url('/fonts/barlow-condensed-700.woff2') format('woff2');
+  font-weight: 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'BarlowText';
+  src: url('/fonts/barlow-500.woff2') format('woff2');
+  font-weight: 500;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'BarlowText';
+  src: url('/fonts/barlow-600.woff2') format('woff2');
+  font-weight: 600;
+  font-display: swap;
+}
+
+@theme {
+  /* Floodlit turf at night, warmer and less clinical than a pure neutral. */
+  --color-turf-950: #06120c;
+  --color-turf-900: #0a1a11;
+  --color-turf-850: #0e2418;
+  --color-turf-800: #12301f;
+  --color-turf-700: #1b4630;
+
+  /* Pitch line white and the one hot accent. */
+  --color-chalk: #f2f7f3;
+  --color-lime-400: #b8ff3c;
+  --color-lime-500: #9bee16;
+  --color-lime-600: #7cc60c;
+
+  --color-gain: #5ce08a;
+  --color-loss: #ff6b5e;
+  --color-gold: #ffc94d;
+
+  /* Condensed for anything numeric or shouted; text face for prose. */
+  --font-display: 'BarlowCond', 'Arial Narrow', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  --font-sans:
+    'BarlowText', system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC',
+    'Hiragino Sans GB', 'Microsoft YaHei', 'Source Han Sans SC', sans-serif;
+}
+
+/*
+ * Two variants the whole desktop treatment hangs off.
+ *
+ * `desk` is about *room*, not about being a computer: 760px is where a 460px
+ * column stops being the window and starts being an object sitting in one. A
+ * tablet in landscape gets the same treatment and should.
+ *
+ * `kbd` is about *input*, and the two are deliberately separate. A hint that
+ * says "press 1" must never appear on a touchscreen, however wide it is, and a
+ * hover style must never latch on a device where hover means "I just tapped
+ * this".
+ */
+@custom-variant desk (@media (min-width: 760px));
+/*
+ * Wide enough for two columns.
+ *
+ * 1040px rather than 760: below it the frame is a phone-shaped object and the
+ * career table stays inside the middle slot, which is the layout every phone
+ * and small laptop gets. Above it the frame widens and the record stands beside
+ * the decision — deliberately, because reading a career on a computer
+ * means having the question and the record in view at once.
+ */
+@custom-variant wide (@media (min-width: 1040px));
+@custom-variant kbd (@media (hover: hover) and (pointer: fine));
+
+:root {
+  color-scheme: dark;
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-top: env(safe-area-inset-top, 0px);
+}
+
+html,
+body,
+#root {
+  /* Dynamic viewport units, because 100% resolves against the layout
+     viewport on mobile and leaves a dead strip the height of the browser
+     chrome at the bottom of the screen. */
+  height: 100vh;
+  height: 100dvh;
+  /* Nothing in this game scrolls the document. */
+  overflow: hidden;
+}
+
+body {
+  margin: 0;
+  background: var(--color-turf-950);
+  color: var(--color-chalk);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  overscroll-behavior: none;
+  /*
+   * No block of text may end with a single character or word on its last
+   * line — a rule since 2026-09-23. In Chinese it is the worse fault:
+   * "营养方 / 案" and "技术教 / 练" split a two-character word across lines,
+   * and one career on a phone produced a dozen of them.
+   *
+   * `pretty` asks the browser to re-break the last few lines of a paragraph
+   * so the final one is never a lone word, and it inherits, so this one line
+   * covers every screen. Text that is not allowed to wrap (`truncate`,
+   * `nowrap`) is unaffected. `verify-ui.mjs` reads every rendered line of
+   * every screen it passes through, in both languages and at every size, and
+   * fails on a stranded character — so this stays fixed rather than being
+   * fixed once.
+   */
+  text-wrap: pretty;
+}
+
+/*
+ * The intro's hero: eyebrow, title, subtitle — sized to the box it gets.
+ *
+ * The box is whatever the bottom slot leaves over, and that varies more than
+ * it looks: an unread-update row, a 667pt iPhone SE, and since iOS 26 a
+ * home-screen window one status bar shorter than the screen (WebKit bug
+ * 301108; see the status-bar meta in index.html). A fixed 44px title that
+ * fits a 17 Pro's box does not fit any of those, and a clipped, centred box
+ * spills the overflow out of both ends.
+ *
+ * So the box is a size container and the hero answers to its height: the
+ * title scales with it between 28 and 44px, the subtitle goes when there is
+ * no room for it rather than being cut in half, and on the very smallest box
+ * the eyebrow goes too. `verify-ui.mjs` checks the hero is whole — top below
+ * the status bar, bottom inside its box — on a matrix of phone shapes with
+ * their real safe areas.
+ */
+.intro-hero {
+  container-type: size;
+}
+.intro-title {
+  font-size: clamp(28px, 15cqh, 44px);
+}
+@container (max-height: 215px) {
+  .intro-sub {
+    display: none;
+  }
+}
+@container (max-height: 120px) {
+  .intro-eyebrow {
+    display: none;
+  }
+}
+
+/*
+ * Titles and labels balance instead: a two-line title reads best as two
+ * lines of about the same length, which also rules out the lone last word.
+ */
+h1,
+h2,
+h3,
+.display {
+  text-wrap: balance;
+}
+
+/*
+ * The desktop stage, and the frame standing on it.
+ * ===========================================================================
+ *
+ * On a phone the frame *is* the window: both rules below are no-ops and the
+ * game fills the screen exactly as it always has.
+ *
+ * On a computer, leaving it as-is produced the worst version of a mobile-first
+ * game: a 480px column stretched down a 1080px window, its header pinned to the
+ * top, its decision card pinned to the bottom, and four hundred pixels of black
+ * nothing in between. It did not look like a design decision; it looked like
+ * something had failed to load.
+ *
+ * So the game becomes an object with edges — capped at a phone's proportions,
+ * centred, lit from above — and the window becomes the room it sits in. This is
+ * how a mobile game is presented on itch or Poki, and it is honest: this *is* a
+ * phone game, and pretending otherwise by stretching it would be worse than
+ * saying so.
+ *
+ * ## The transform is load-bearing. Do not remove it.
+ *
+ * `transform` makes `.app-frame` the containing block for `position: fixed`
+ * descendants. That one line is what confines every overlay in the app — the
+ * bottom sheets, the trophy celebration, the relegation card and the rewarded
+ * ad — to the frame instead of to the browser window, without a single `fixed`
+ * needing to know the frame exists. Take it away and the ad covers a 27-inch
+ * monitor and the sheets dock to the bottom of the screen, half a metre from
+ * the game they belong to.
+ *
+ * It applies only inside the media query, so mobile keeps plain viewport-fixed
+ * overlays and none of this can regress the phone layout.
+ */
+.app-stage {
+  height: 100%;
+}
+
+.app-frame {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+@media (min-width: 760px) {
+  .app-stage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 26px;
+    /*
+      The room. Floodlight from above, mown stripes at the threshold of
+      visibility, and a vignette that darkens the corners so the frame is the
+      brightest thing on the page. The base is a shade *lighter* than the frame
+      on purpose — the game is a screen inset into the room, not a rectangle
+      painted on it, and if the two are the same colour the frame disappears
+      and the whole thing reads as a rendering fault.
+
+      All gradients: no image payload, and it scales to any monitor.
+    */
+    background:
+      radial-gradient(ellipse 60% 42% at 50% -6%, rgb(184 255 60 / 0.16), transparent 72%),
+      repeating-linear-gradient(97deg, transparent 0 84px, rgb(255 255 255 / 0.012) 84px 168px),
+      radial-gradient(ellipse 78% 64% at 50% 46%, rgb(18 48 31 / 0.85), transparent 78%),
+      radial-gradient(ellipse 120% 100% at 50% 50%, transparent 42%, rgb(0 0 0 / 0.75) 100%),
+      #0a1a12;
+  }
+
+  .app-frame {
+    flex: 0 1 auto;
+    width: 100%;
+    /*
+      A phone, at a phone's proportions. Both numbers were tuned by looking:
+      wider than this and the content — laid out for a 375px column — stops
+      filling its own screen, so the identity picker and the intro grow a band
+      of dead black in the middle. Taller than this and the same thing happens
+      vertically. 420 × 780 is 0.54, against a modern phone's 0.46–0.56.
+    */
+    max-width: 420px;
+    height: 780px;
+    max-height: 100%;
+    border-radius: 30px;
+    background: var(--color-turf-950);
+    /*
+      Three layers doing three jobs: a rim so the edge exists, a drop shadow so
+      it sits above the room, and a low green bloom so the floodlight above it
+      looks like it is reaching the screen.
+    */
+    border: 1px solid rgb(255 255 255 / 0.14);
+    box-shadow:
+      inset 0 1px 0 0 rgb(255 255 255 / 0.07),
+      0 40px 90px -28px rgb(0 0 0 / 0.95),
+      0 0 90px -30px rgb(155 238 22 / 0.16);
+    overflow: hidden;
+    /* See above. This is the containing block for every fixed overlay. */
+    transform: translateZ(0);
+  }
+}
+
+/*
+ * Two columns, from 1040px up.
+ *
+ * The frame stays an object with edges — same rim, same shadow, same
+ * `transform`, so every overlay is still confined to the game — and simply
+ * grows a second column: the decision on the left at a phone's width, the
+ * career record beside it. That is how a career is actually read on a
+ * computer, and the reason for it: the question and the record
+ * in view at once, rather than the record hidden behind the card.
+ *
+ * The left column keeps its 420px so the composition the whole game is laid
+ * out for is untouched. Only the room around it changes.
+ */
+@media (min-width: 1040px) {
+  html[data-two-col] .app-frame {
+    /*
+     * 420 for the decision and 460 for the record.
+     *
+     * It was 760, which left the record 268px of content once its borders and
+     * padding were taken off — and the table's fixed numeric columns need 228
+     * of that, so the club name was down to about forty pixels and showed one
+     * character. A column that cannot print a club name is not a career
+     * record. The left column keeps its 420 either way: the composition the
+     * whole game is laid out for is untouched, and only the room around it
+     * changes.
+     */
+    max-width: 880px;
+  }
+}
+
+/* Condensed numerals, tabular so nothing jumps as values change. */
+.num {
+  font-family: var(--font-display);
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: 'tnum' 1;
+  letter-spacing: -0.01em;
+}
+
+.display {
+  font-family: var(--font-display);
+  letter-spacing: -0.005em;
+}
+
+/* Chinese does not have a condensed cut here, so it falls back to the text face
+   and needs its own tracking to sit level with the Latin numerals. */
+:lang(zh) .display {
+  letter-spacing: 0;
+}
+
+@utility card {
+  background: linear-gradient(180deg, rgb(255 255 255 / 0.07), rgb(255 255 255 / 0.028));
+  border: 1px solid rgb(255 255 255 / 0.1);
+  border-radius: 14px;
+}
+
+/* The chalk line under a section label, as on a pitch. */
+@utility rule {
+  background: linear-gradient(90deg, rgb(255 255 255 / 0.16), transparent);
+  height: 1px;
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translate3d(0, 10px, 0); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes pop {
+  0% { opacity: 0; transform: scale(0.92); }
+  70% { transform: scale(1.02); }
+  100% { opacity: 1; transform: none; }
+}
+
+.animate-rise { animation: rise 320ms cubic-bezier(0.16, 1, 0.3, 1) both; }
+.animate-pop { animation: pop 380ms cubic-bezier(0.16, 1, 0.3, 1) both; }
+
+.stagger > * { animation: rise 340ms cubic-bezier(0.16, 1, 0.3, 1) both; }
+.stagger > *:nth-child(1) { animation-delay: 30ms; }
+.stagger > *:nth-child(2) { animation-delay: 75ms; }
+.stagger > *:nth-child(3) { animation-delay: 120ms; }
+.stagger > *:nth-child(4) { animation-delay: 165ms; }
+.stagger > *:nth-child(5) { animation-delay: 210ms; }
+.stagger > *:nth-child(6) { animation-delay: 255ms; }
+
+/* The gamble roulette: the two outcome pills take turns under the light. */
+@keyframes roulette-flash {
+  0%, 49.9% { background: rgb(255 255 255 / 0.16); }
+  50%, 100% { background: transparent; }
+}
+.roulette-0 { animation: roulette-flash 400ms linear infinite; }
+.roulette-1 { animation: roulette-flash 400ms linear infinite 200ms; }
+
+/* Trophy celebration burst: particles fly outward along their own angle. */
+@keyframes burst-out {
+  0% { transform: rotate(var(--burst-angle)) translateY(0); opacity: 1; }
+  100% { transform: rotate(var(--burst-angle)) translateY(calc(var(--burst-distance) * -1)); opacity: 0; }
+}
+.burst-particle { animation: burst-out 900ms cubic-bezier(0.16, 1, 0.3, 1) both; }
+
+/*
+ * The CSS half of the same promise, and it has to cover the two that matter
+ * most. It listed only the entrance animations while `.roulette-*` — a 400ms
+ * *infinite* flash, 2.5 times a second, sitting on the decision card — and the
+ * celebration burst ran regardless. Those are the two a person with vestibular
+ * sensitivity would actually have turned the setting on for.
+ *
+ * Belt and braces with the JS setting on purpose: this applies before any
+ * script has run, and it keeps working if the setting is ever bypassed.
+ */
+@media (prefers-reduced-motion: reduce) {
+  .animate-rise,
+  .animate-pop,
+  .stagger > *,
+  .roulette-0,
+  .roulette-1,
+  .burst-particle { animation: none; }
+}
+
+/*
+ * Scrollbars: hidden on a touchscreen, thin and real with a mouse.
+ *
+ * Hiding them everywhere was right when everywhere was a phone — the few things
+ * that scroll (a sheet, the identity list, a long career table) are scrolled
+ * with a finger, and a permanent grey bar down the side of a card is just
+ * noise. With a mouse it is the opposite: a pane that scrolls and shows no bar
+ * reads as a pane that has nothing further in it, and the content below never
+ * gets found.
+ */
+::-webkit-scrollbar { width: 0; height: 0; }
+
+@media (hover: hover) and (pointer: fine) {
+  ::-webkit-scrollbar { width: 7px; height: 7px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb {
+    background: rgb(255 255 255 / 0.14);
+    border-radius: 99px;
+  }
+  ::-webkit-scrollbar-thumb:hover { background: rgb(255 255 255 / 0.24); }
+  /* Firefox has no pseudo-elements for this; these two properties are the API. */
+  * { scrollbar-width: thin; scrollbar-color: rgb(255 255 255 / 0.16) transparent; }
+}
+
+button {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+/*
+ * Tailwind's preflight sets buttons to the default arrow. On a phone nobody can
+ * tell; with a mouse, the entire game is buttons and every one of them looked
+ * inert.
+ */
+@media (hover: hover) and (pointer: fine) {
+  button:not(:disabled),
+  a[href],
+  [role='button'] {
+    cursor: pointer;
+  }
+}
+
+/*
+ * Keyboard focus, which had no styling at all.
+ *
+ * `:focus-visible` rather than `:focus` on purpose: it fires for a Tab and not
+ * for a click, so a mouse player never sees a ring and somebody playing the
+ * whole career from the keyboard always knows where they are.
+ */
+:focus-visible {
+  outline: 2px solid var(--color-lime-400);
+  outline-offset: 2px;
+  border-radius: 10px;
+}
+
+/*
+ * Nothing in the game is text to be selected.
+ *
+ * Every screen is a card you tap, and a tap that lands a few milliseconds long
+ * — which on a phone is most of them — was raising the selection handles and
+ * the copy/paste bar over the decision the player was trying to make. The whole
+ * interface is buttons and labels, so there is nothing here worth selecting and
+ * the gesture only ever misfires.
+ *
+ * `input` and `textarea` are exempt: the player types a surname on the identity
+ * screen, and selection is the only way to correct a typo mid-word.
+ */
+body {
+  -webkit-user-select: none;
+  user-select: none;
+  /* Stops the iOS long-press "callout" (copy / look up / share) as well, which
+     is a separate gesture from selection and survives user-select on its own. */
+  -webkit-touch-callout: none;
+}
+
+input,
+textarea {
+  -webkit-user-select: text;
+  user-select: text;
+  -webkit-touch-callout: default;
+}

@@ -1,0 +1,28 @@
+/*
+ * Typechecking config: the build config plus the tests.
+ *
+ * `tsconfig.json` excludes `*.test.ts` because it emits, and a published
+ * package should not carry its own tests. The consequence went unnoticed for
+ * months: `pnpm typecheck` never looked at a test file, so a test could call
+ * `mulberry32('a-string')` — a number parameter — and pass, because a NaN seed
+ * gives every "sample" the same value. A suite that measures nothing looks
+ * exactly like one that passes.
+ */
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": true,
+    "declaration": false,
+    "declarationMap": false,
+    "sourceMap": false,
+    // Nothing is emitted here, so the build's `rootDir` would only serve to
+    // reject the content package the tests read.
+    "rootDir": "../..",
+    // The engine itself never imports the content package — that is the
+    // architecture invariant. Its tests do, because a rule about the world is
+    // only worth asserting against the real world.
+    "paths": { "@bg/content": ["../content/src/index.ts"] }
+  },
+  "include": ["src/**/*"],
+  "exclude": []
+}

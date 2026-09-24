@@ -1,0 +1,12 @@
+/* The build config plus the tests; see `packages/engine/tsconfig.check.json`. */
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": true,
+    "declaration": false,
+    "declarationMap": false,
+    "sourceMap": false
+  },
+  "include": ["src/**/*"],
+  "exclude": []
+}

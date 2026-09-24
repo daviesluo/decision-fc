@@ -1,0 +1,238 @@
+/**
+ * Chinese club names.
+ *
+ * Using the names Chinese fans actually say — 阿森纳, 曼城, 皇马 — not
+ * transliterations of the English. A Chinese player reading "Exeter City" in an
+ * otherwise Chinese interface is being asked to do translation work mid-game,
+ * and the whole point of a transfer card is that the club is recognised at a
+ * glance.
+ *
+ * `short` is what appears in tight spots (season rows, the header); `name` is
+ * the full form used on decision cards.
+ */
+export const CLUB_NAMES_ZH: Record<string, { name: string; short: string }> = {
+  // England
+  'man-city': { name: '曼彻斯特城', short: '曼城' },
+  liverpool: { name: '利物浦', short: '利物浦' },
+  arsenal: { name: '阿森纳', short: '阿森纳' },
+  'man-utd': { name: '曼彻斯特联', short: '曼联' },
+  chelsea: { name: '切尔西', short: '切尔西' },
+  tottenham: { name: '托特纳姆热刺', short: '热刺' },
+  newcastle: { name: '纽卡斯尔联', short: '纽卡斯尔' },
+  'aston-villa': { name: '阿斯顿维拉', short: '维拉' },
+  brighton: { name: '布莱顿', short: '布莱顿' },
+  'west-ham': { name: '西汉姆联', short: '西汉姆' },
+  'crystal-p': { name: '水晶宫', short: '水晶宫' },
+  everton: { name: '埃弗顿', short: '埃弗顿' },
+  fulham: { name: '富勒姆', short: '富勒姆' },
+  brentford: { name: '布伦特福德', short: '布伦特福德' },
+  wolves: { name: '狼队', short: '狼队' },
+  forest: { name: '诺丁汉森林', short: '森林' },
+  leeds: { name: '利兹联', short: '利兹联' },
+  southampton: { name: '南安普顿', short: '南安普顿' },
+  norwich: { name: '诺维奇城', short: '诺维奇' },
+  coventry: { name: '考文垂城', short: '考文垂' },
+  sunderland: { name: '桑德兰', short: '桑德兰' },
+  hull: { name: '赫尔城', short: '赫尔城' },
+  ipswich: { name: '伊普斯维奇', short: '伊普斯维奇' },
+  'sheff-utd': { name: '谢菲尔德联', short: '谢联' },
+  'west-brom': { name: '西布罗姆维奇', short: '西布朗' },
+  wrexham: { name: '雷克斯汉姆', short: '雷克斯汉姆' },
+
+  // Spain
+  'real-madrid': { name: '皇家马德里', short: '皇马' },
+  barcelona: { name: '巴塞罗那', short: '巴萨' },
+  atletico: { name: '马德里竞技', short: '马竞' },
+  sociedad: { name: '皇家社会', short: '皇家社会' },
+  villarreal: { name: '比利亚雷亚尔', short: '比利亚雷亚尔' },
+  betis: { name: '皇家贝蒂斯', short: '贝蒂斯' },
+  athletic: { name: '毕尔巴鄂竞技', short: '毕尔巴鄂' },
+  sevilla: { name: '塞维利亚', short: '塞维利亚' },
+  valencia: { name: '瓦伦西亚', short: '瓦伦西亚' },
+  girona: { name: '赫罗纳', short: '赫罗纳' },
+  celta: { name: '塞尔塔', short: '塞尔塔' },
+  osasuna: { name: '奥萨苏纳', short: '奥萨苏纳' },
+  'sporting-g': { name: '希洪竞技', short: '希洪' },
+  racing: { name: '桑坦德竞技', short: '桑坦德' },
+
+  // Italy
+  inter: { name: '国际米兰', short: '国米' },
+  juventus: { name: '尤文图斯', short: '尤文' },
+  'ac-milan': { name: 'AC米兰', short: 'AC米兰' },
+  napoli: { name: '那不勒斯', short: '那不勒斯' },
+  atalanta: { name: '亚特兰大', short: '亚特兰大' },
+  roma: { name: '罗马', short: '罗马' },
+  lazio: { name: '拉齐奥', short: '拉齐奥' },
+  fiorentina: { name: '佛罗伦萨', short: '佛罗伦萨' },
+  bologna: { name: '博洛尼亚', short: '博洛尼亚' },
+  torino: { name: '都灵', short: '都灵' },
+  udinese: { name: '乌迪内斯', short: '乌迪内斯' },
+  genoa: { name: '热那亚', short: '热那亚' },
+  sampdoria: { name: '桑普多利亚', short: '桑普' },
+  palermo: { name: '巴勒莫', short: '巴勒莫' },
+
+  // Germany
+  bayern: { name: '拜仁慕尼黑', short: '拜仁' },
+  leverkusen: { name: '勒沃库森', short: '勒沃库森' },
+  dortmund: { name: '多特蒙德', short: '多特' },
+  leipzig: { name: 'RB莱比锡', short: '莱比锡' },
+  stuttgart: { name: '斯图加特', short: '斯图加特' },
+  frankfurt: { name: '法兰克福', short: '法兰克福' },
+  gladbach: { name: '门兴格拉德巴赫', short: '门兴' },
+  wolfsburg: { name: '沃尔夫斯堡', short: '狼堡' },
+  freiburg: { name: '弗赖堡', short: '弗赖堡' },
+  bremen: { name: '云达不来梅', short: '不来梅' },
+  mainz: { name: '美因茨', short: '美因茨' },
+  hsv: { name: '汉堡', short: '汉堡' },
+  schalke: { name: '沙尔克04', short: '沙尔克' },
+  nuernberg: { name: '纽伦堡', short: '纽伦堡' },
+
+  // France
+  psg: { name: '巴黎圣日耳曼', short: '巴黎' },
+  marseille: { name: '马赛', short: '马赛' },
+  monaco: { name: '摩纳哥', short: '摩纳哥' },
+  lyon: { name: '里昂', short: '里昂' },
+  lille: { name: '里尔', short: '里尔' },
+  nice: { name: '尼斯', short: '尼斯' },
+  rennes: { name: '雷恩', short: '雷恩' },
+  lens: { name: '朗斯', short: '朗斯' },
+  nantes: { name: '南特', short: '南特' },
+  strasbourg: { name: '斯特拉斯堡', short: '斯特拉斯堡' },
+  'saint-e': { name: '圣埃蒂安', short: '圣埃蒂安' },
+
+  // Portugal
+  benfica: { name: '本菲卡', short: '本菲卡' },
+  porto: { name: '波尔图', short: '波尔图' },
+  sporting: { name: '葡萄牙体育', short: '葡体' },
+  braga: { name: '布拉加', short: '布拉加' },
+  'vitoria-g': { name: '吉马良斯', short: '吉马良斯' },
+
+  // Netherlands
+  ajax: { name: '阿贾克斯', short: '阿贾克斯' },
+  psv: { name: 'PSV埃因霍温', short: '埃因霍温' },
+  feyenoord: { name: '费耶诺德', short: '费耶诺德' },
+  az: { name: '阿尔克马尔', short: '阿尔克马尔' },
+  twente: { name: '特温特', short: '特温特' },
+  utrecht: { name: '乌得勒支', short: '乌得勒支' },
+
+  // Türkiye
+
+  // Belgium
+  'club-brugge': { name: '布鲁日', short: '布鲁日' },
+  anderlecht: { name: '安德莱赫特', short: '安德莱赫特' },
+  genk: { name: '亨克', short: '亨克' },
+  gent: { name: '根特', short: '根特' },
+  'union-sg': { name: '圣吉罗斯联合', short: '圣吉罗斯' },
+
+  // Scotland
+
+  // Saudi Arabia
+  'al-hilal': { name: '利雅得新月', short: '利雅得新月' },
+  'al-nassr': { name: '利雅得胜利', short: '利雅得胜利' },
+  'al-ittihad': { name: '吉达联合', short: '吉达联合' },
+  'al-ahli-s': { name: '吉达国民', short: '吉达国民' },
+  'al-shabab': { name: '利雅得青年', short: '利雅得青年' },
+  'al-ettifaq': { name: '达曼协作', short: '达曼协作' },
+
+  // USA
+  'inter-miami': { name: '迈阿密国际', short: '迈阿密' },
+  lafc: { name: '洛杉矶FC', short: '洛杉矶FC' },
+  atlanta: { name: '亚特兰大联', short: '亚特兰大联' },
+  seattle: { name: '西雅图海湾人', short: '西雅图' },
+  'ny-red': { name: '纽约红牛', short: '纽约红牛' },
+
+  // Japan
+  kashima: { name: '鹿岛鹿角', short: '鹿岛' },
+  kawasaki: { name: '川崎前锋', short: '川崎前锋' },
+  urawa: { name: '浦和红钻', short: '浦和红钻' },
+  marinos: { name: '横滨水手', short: '横滨水手' },
+  kobe: { name: '神户胜利船', short: '神户' },
+  gamba: { name: '大阪钢巴', short: '大阪钢巴' },
+
+  // South Korea
+
+  // China
+  'shanghai-p': { name: '上海海港', short: '海港' },
+  'shanghai-s': { name: '上海申花', short: '申花' },
+  'beijing-g': { name: '北京国安', short: '国安' },
+  shandong: { name: '山东泰山', short: '泰山' },
+  chengdu: { name: '成都蓉城', short: '蓉城' },
+  zhejiang: { name: '浙江队', short: '浙江' },
+
+  // Australia
+
+  // Added with the league-scope narrowing.
+  'bournemouth': { name: '伯恩茅斯', short: '伯恩茅斯' },
+  'middlesbro': { name: '米德尔斯堡', short: '米堡' },
+  'stoke': { name: '斯托克城', short: '斯托克' },
+  'blackburn': { name: '布莱克本', short: '布莱克本' },
+  'preston': { name: '普雷斯顿', short: '普雷斯顿' },
+  'millwall': { name: '米尔沃尔', short: '米尔沃尔' },
+  'mallorca': { name: '马洛卡', short: '马洛卡' },
+  'getafe': { name: '赫塔菲', short: '赫塔菲' },
+  espanyol: { name: '西班牙人', short: '西班牙人' },
+  rayo: { name: '巴列卡诺', short: '巴列卡诺' },
+  alaves: { name: '阿拉维斯', short: '阿拉维斯' },
+  elche: { name: '埃尔切', short: '埃尔切' },
+  'las-palmas': { name: '拉斯帕尔马斯', short: '拉斯帕尔马斯' },
+  leganes: { name: '莱加内斯', short: '莱加内斯' },
+  valladolid: { name: '巴利亚多利德', short: '巴利亚多利德' },
+  cadiz: { name: '加的斯', short: '加的斯' },
+  'deportivo': { name: '拉科鲁尼亚', short: '拉科' },
+  'malaga': { name: '马拉加', short: '马拉加' },
+  'levante': { name: '莱万特', short: '莱万特' },
+  'eibar': { name: '埃瓦尔', short: '埃瓦尔' },
+  'como': { name: '科莫', short: '科莫' },
+  parma: { name: '帕尔马', short: '帕尔马' },
+  cagliari: { name: '卡利亚里', short: '卡利亚里' },
+  sassuolo: { name: '萨索洛', short: '萨索洛' },
+  lecce: { name: '莱切', short: '莱切' },
+  monza: { name: '蒙扎', short: '蒙扎' },
+  venezia: { name: '威尼斯', short: '威尼斯' },
+  frosinone: { name: '弗罗西诺内', short: '弗罗西诺内' },
+  pisa: { name: '比萨', short: '比萨' },
+  empoli: { name: '恩波利', short: '恩波利' },
+  'verona': { name: '维罗纳', short: '维罗纳' },
+  'cremonese': { name: '克雷莫纳', short: '克雷莫纳' },
+  'catanzaro': { name: '卡坦扎罗', short: '卡坦扎罗' },
+  'modena': { name: '摩德纳', short: '摩德纳' },
+  'hoffenheim': { name: '霍芬海姆', short: '霍芬海姆' },
+  'augsburg': { name: '奥格斯堡', short: '奥格斯堡' },
+  koeln: { name: '科隆', short: '科隆' },
+  'union-b': { name: '柏林联合', short: '柏林联' },
+  elversberg: { name: '埃弗斯堡', short: '埃弗斯堡' },
+  lautern: { name: '凯泽斯劳滕', short: '凯泽斯劳滕' },
+  bochum: { name: '波鸿', short: '波鸿' },
+  'st-pauli': { name: '圣保利', short: '圣保利' },
+  'hertha': { name: '柏林赫塔', short: '赫塔' },
+  'hannover': { name: '汉诺威96', short: '汉诺威' },
+  'karlsruher': { name: '卡尔斯鲁厄', short: '卡尔斯鲁厄' },
+  'paderborn': { name: '帕德博恩', short: '帕德博恩' },
+  'brest': { name: '布雷斯特', short: '布雷斯特' },
+  'toulouse': { name: '图卢兹', short: '图卢兹' },
+  'paris-fc': { name: '巴黎FC', short: '巴黎FC' },
+  auxerre: { name: '欧塞尔', short: '欧塞尔' },
+  'le-havre': { name: '勒阿弗尔', short: '勒阿弗尔' },
+  lorient: { name: '洛里昂', short: '洛里昂' },
+  angers: { name: '昂热', short: '昂热' },
+  'le-mans': { name: '勒芒', short: '勒芒' },
+  montpellier: { name: '蒙彼利埃', short: '蒙彼利埃' },
+  reims: { name: '兰斯', short: '兰斯' },
+  metz: { name: '梅斯', short: '梅斯' },
+  sochaux: { name: '索肖', short: '索肖' },
+  'guingamp': { name: '甘冈', short: '甘冈' },
+  'troyes': { name: '特鲁瓦', short: '特鲁瓦' },
+  'grenoble': { name: '格勒诺布尔', short: '格勒' },
+  'famalicao': { name: '法马利康', short: '法马利康' },
+  'estoril': { name: '埃斯托利尔', short: '埃斯托利尔' },
+  'rio-ave': { name: '里奥阿维', short: '里奥阿维' },
+  'heerenveen': { name: '海伦芬', short: '海伦芬' },
+  'sparta-r': { name: '鹿特丹斯巴达', short: '斯巴达' },
+  'antwerp': { name: '皇家安特卫普', short: '安特卫普' },
+  'standard': { name: '标准列日', short: '标准列日' },
+  'cercle': { name: '瑟克尔布鲁日', short: '瑟克尔' },
+  'westerlo': { name: '韦斯特洛', short: '韦斯特洛' },
+  'al-qadsiah': { name: '卡迪西亚', short: '卡迪西亚' },
+  'columbus': { name: '哥伦布机员', short: '哥伦布' },
+  'sanfrecce': { name: '广岛三箭', short: '广岛' },
+};

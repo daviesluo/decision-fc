@@ -1,0 +1,54 @@
+# Cloudflare Workers static-assets caching and security headers.
+# Cloudflare applies every matching block, so the site-wide security headers in
+# the /* rule below combine with the per-path cache rules that follow.
+
+# Security headers for every response. Deliberately not a Content-Security-
+# Policy: the game loads Google's AdSense/H5 Games Ads tag at runtime, which
+# pulls in further Google origins and frames, and a strict CSP breaks rewarded
+# video in ways that are painful to keep working. These four headers harden the
+# site without touching what the ad tag needs.
+#   nosniff        — a response is used as its declared type, never sniffed into
+#                    an executable one.
+#   frame-ancestors — SAMEORIGIN stops another site from embedding the game in
+#                    an iframe (clickjacking, and hotlinking the whole app).
+#   referrer-policy — never leak the full URL to third parties.
+#   permissions    — switch off powerful device APIs the game never uses; the
+#                    ad-relevant features (e.g. Topics) are left untouched.
+#   hsts           — once a browser has seen this header it refuses to talk to
+#                    the domain over plain HTTP for a year, which closes the
+#                    one request an attacker on the network can still touch:
+#                    the very first one, before the redirect to HTTPS. The CSP
+#                    reasoning above does not apply to it — it loads nothing
+#                    and constrains nothing the ad tag needs.
+#                    `includeSubDomains` is safe here because Cloudflare
+#                    terminates TLS for every host on the zone, `www` included
+#                    when it is added. `preload` is deliberately absent: it is
+#                    a submission to a list baked into browser binaries and is
+#                    slow and painful to reverse, which is the wrong trade for
+#                    a one-person project that may yet need a plain-HTTP host.
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: geolocation=(), camera=(), microphone=(), payment=(), usb=()
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+# Hashed build assets never change; index.html must always revalidate so a
+# deploy is picked up immediately. Crests and fonts are stable files.
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+/crests/*
+  Cache-Control: public, max-age=604800
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+/
+  Cache-Control: public, max-age=0, must-revalidate
+/index.html
+  Cache-Control: public, max-age=0, must-revalidate
+# The service worker must always revalidate, for the same reason index.html
+# does and more urgently: a cached worker keeps serving the cache rules of the
+# build that shipped it, so a stale one can outlive the deploy that fixed it.
+# Browsers bypass the HTTP cache for the worker script on most update checks
+# anyway; this makes it true on all of them.
+/sw.js
+  Cache-Control: public, max-age=0, must-revalidate

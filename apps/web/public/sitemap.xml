@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Nine URLs: the game in two languages, the comparison page in two languages,
+  the browser-games guide in two languages, and the three pages that say who
+  runs this — about, contact and the privacy policy. Nothing else, because nothing else exists — a sitemap that claims
+  pages which are not there is worse than a short one.
+
+  Submitting it: the property is a *Domain* property, verified by DNS, and that
+  form takes the whole URL — `https://decisionfc.com/sitemap.xml`. The bare
+  `sitemap.xml` that a URL-prefix property accepts is rejected there as an
+  invalid address.
+
+  Every URL here ends in a slash, and that is not cosmetic. Cloudflare resolves
+  `zh/index.html` at `/zh/` and answers `/zh` with a 307 to it
+  (`html_handling: auto-trailing-slash`, declared in wrangler.jsonc). Listing
+  the unslashed form pointed every crawler, and every `hreflang` pair, at a URL
+  that redirects — Baidu's submission docs say outright to submit the
+  post-redirect URL, and a canonical that redirects is the one kind of canonical
+  Google is entitled to ignore. `tools/seo.mjs` checks the built pages agree.
+
+  `lastmod` is deliberately absent rather than wrong: a date that never changes
+  teaches a crawler to stop believing it. Add one only if something starts
+  keeping it honest.
+-->
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml"
+>
+  <url>
+    <loc>https://decisionfc.com/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://decisionfc.com/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://decisionfc.com/zh/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://decisionfc.com/" />
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://decisionfc.com/zh/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://decisionfc.com/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://decisionfc.com/zh/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://decisionfc.com/" />
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://decisionfc.com/football-career-games/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://decisionfc.com/football-career-games/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://decisionfc.com/zh/football-career-games/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://decisionfc.com/football-career-games/" />
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://decisionfc.com/zh/football-career-games/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://decisionfc.com/football-career-games/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://decisionfc.com/zh/football-career-games/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://decisionfc.com/football-career-games/" />
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://decisionfc.com/free-football-games-browser/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://decisionfc.com/free-football-games-browser/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://decisionfc.com/zh/free-football-games-browser/" />
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://decisionfc.com/zh/free-football-games-browser/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://decisionfc.com/free-football-games-browser/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://decisionfc.com/zh/free-football-games-browser/" />
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://decisionfc.com/about/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://decisionfc.com/contact/</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://decisionfc.com/privacy/</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+</urlset>

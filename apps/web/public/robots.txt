@@ -1,0 +1,99 @@
+# decisionfc.com
+#
+# This has to exist as a real file. The worker serves index.html for any path it
+# does not recognise (`not_found_handling: single-page-application`), so before
+# this existed /robots.txt answered 200 with the app's HTML — which is not a
+# robots file, and is the kind of thing that makes a crawler treat a new domain
+# as broken rather than as permissive.
+
+User-agent: *
+Allow: /
+
+# Build output and app plumbing. None of it is a page.
+Disallow: /assets/
+Disallow: /crests/
+Disallow: /trophies/
+Disallow: /fonts/
+
+# ---------------------------------------------------------------------------
+# Chinese search engines
+#
+# Named individually and allowed everything. Baidu and Sogou in particular are
+# conservative with sites that give them anything ambiguous, and half the
+# audience for this game searches in Chinese — 足球生涯, 足球经理游戏, 球员生涯模拟.
+# The Chinese page they should be reading is /zh/, which is a real prerendered
+# URL rather than a language toggle, and it is in the sitemap.
+# ---------------------------------------------------------------------------
+User-agent: Baiduspider
+Allow: /
+
+User-agent: Baiduspider-render
+Allow: /
+
+User-agent: Sogou web spider
+Allow: /
+
+User-agent: 360Spider
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: YisouSpider
+Allow: /
+
+# ---------------------------------------------------------------------------
+# Assistants
+#
+# Deliberately allowed, which is the opposite of what most sites are doing.
+# "Ask an assistant for a game like this" is now a real discovery path, and a
+# free browser game with nothing to sell has everything to gain from being
+# quotable and nothing to lose from being read. `/llms.txt` is written for
+# exactly these readers.
+#
+# The distinction worth knowing: some of these fetch a page a user has asked
+# about (live retrieval), others crawl for training. Both are welcome here.
+# ---------------------------------------------------------------------------
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+User-agent: meta-externalagent
+Allow: /
+
+Sitemap: https://decisionfc.com/sitemap.xml

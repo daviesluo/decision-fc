@@ -1,0 +1,88 @@
+{
+  "slug": "football-career-games",
+  "lang": "en",
+  "title": "Football career games you can finish in five minutes — Decision FC",
+  "description": "Like FIFA career mode, EA FC or Football Manager but shorter and free? An honest comparison, and a browser football career game you finish in five minutes.",
+  "h1": "If you want a football career game but not a whole evening",
+  "intro": [
+    "Every football game worth playing asks for time. Football Manager asks for a winter. FIFA and EA FC career mode ask for a console and a season's worth of matches. PES, eFootball, the mobile card games — all of them want you back tomorrow.",
+    "Decision FC is the version of that idea you can finish on a train. You are a player rather than a manager, the game hands you one decision at a time, and a full twenty-season career takes about five minutes. It is free, runs in a browser, and there is nothing to install."
+  ],
+  "comparisonTitle": "How it actually compares",
+  "comparisonNote": "Written to be useful rather than flattering — three of these are far bigger games than this one, and if what you want is what they do, you should go and play them.",
+  "comparison": [
+    {
+      "name": "Football Manager (FM)",
+      "them": "The deepest football simulation there is: tactics, scouting, training, staff, transfers, decades of save. Hundreds of hours, and it earns them.",
+      "us": "You are one player, not the club. There is no tactics screen and no squad to pick. A career is five minutes, and the decisions are about your life rather than the team sheet.",
+      "who": "Play FM if you want to run a club. Play this if you have twenty minutes and want four careers in it."
+    },
+    {
+      "name": "FIFA / EA FC career mode",
+      "them": "Player career mode inside a full football game — you play the matches, and the career frames them.",
+      "us": "The career without the matches. Every season is simulated from your squad role, your ability and your fitness, so what you decide off the pitch is the whole game.",
+      "who": "If the part of career mode you liked was the transfer decisions rather than the ninety minutes, this is that part on its own."
+    },
+    {
+      "name": "PES / eFootball",
+      "them": "Match-first, free-to-play, built around collecting players.",
+      "us": "No collecting, no energy, no timers, no purchases at all. One career, start to finish, whenever you feel like it.",
+      "who": "If the free-to-play loop is the bit you are tired of, there is none of it here."
+    },
+    {
+      "name": "Text career simulators on itch or mobile",
+      "them": "The same shape, usually one league, often abandoned.",
+      "us": "191 real clubs across twelve countries, a squad ladder that is decided by ability rather than dice, and three world leaderboards with server-side verification.",
+      "who": "Closest neighbour, and the comparison this one most wants to be judged on."
+    }
+  ],
+  "sectionsTitle": "What a career actually looks like",
+  "sections": [
+    {
+      "h": "You start at sixteen, with a choice of academies",
+      "p": "Three clubs want you. They differ in what they can teach you, what division they are in, and how likely you are to ever play. The one with the best coaching is rarely the one with the famous badge."
+    },
+    {
+      "h": "You have to get into the side",
+      "p": "Squad status runs from fringe player to the side being built around you, and it is decided by your ability against that club's standard — never by luck. The game shows you exactly how many rating points you are from the next rung, so \"am I good enough for them?\" is a question you can answer rather than gamble on."
+    },
+    {
+      "h": "The loan is where a career is made",
+      "p": "At seventeen you go out locally. At eighteen it is the Championship, 2. Bundesliga or Serie B. If you come back better than you left, the next loan can be a top-flight club — and if you do not, it cannot. The ladder is climbed by getting good, not by waiting."
+    },
+    {
+      "h": "Then you choose, over and over",
+      "p": "The bigger club or the one that will play you. The renewal or the free transfer. The money abroad at thirty-three or one more season chasing a trophy. Every offer is real — a wage, a contract length, a signing bonus and a promised role — and the game will not offer you a club that makes no sense for who you are."
+    }
+  ],
+  "faqTitle": "Questions people actually ask",
+  "faq": [
+    {
+      "q": "Is it free?",
+      "a": "Yes, completely. No account, no purchases, no paid tier. It is funded by an optional rewarded advert when you choose to play again, and the first replay of every day skips even that. Nothing ever interrupts a career in progress."
+    },
+    {
+      "q": "Do I need to download anything?",
+      "a": "No. It runs in any browser on a phone, tablet or desktop. You can add it to your home screen if you want it to behave like an app, but that is optional."
+    },
+    {
+      "q": "How long is a career?",
+      "a": "About five minutes for twenty seasons, on the standard pace. There is a faster pace that deals fewer decisions and a deeper one that deals more; all three are balanced to produce the same quality of career, so pace is length rather than difficulty."
+    },
+    {
+      "q": "Is it just luck?",
+      "a": "No, and this is measured rather than asserted. Playing well returns a median career score of 1991 against 1758 for playing badly and 1585 for playing at random, and wins on 70% of identical starting positions. Roughly 30% of the outcome is inside your control — which for a game about a career that also contains injuries, form and relegation is the balance it is aiming for."
+    },
+    {
+      "q": "Are the clubs real?",
+      "a": "Yes — 191 real clubs, in twelve countries: England, Spain, Italy, Germany and France at two levels each, plus Portugal, the Netherlands and Belgium. Saudi Arabia, the USA, Japan and China appear late in a career, where a move for money actually belongs."
+    },
+    {
+      "q": "Is there a Chinese version?",
+      "a": "Yes. It is a rewrite rather than a translation — the cards read like Chinese football writing rather than translated English."
+    }
+  ],
+  "ctaTitle": "Try it",
+  "ctaBody": "One career is five minutes and costs nothing.",
+  "ctaLabel": "Play Decision FC"
+}

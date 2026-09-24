@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Privacy Policy · Decision FC 足球生涯</title>
+    <meta name="description" content="How Decision FC (decisionfc.com) handles data and advertising, in English and 简体中文." />
+    <link rel="canonical" href="https://decisionfc.com/privacy/" />
+    <meta name="robots" content="index,follow" />
+    <meta name="google-adsense-account" content="ca-pub-8335081072942378" />
+    <style>
+      :root { color-scheme: dark; }
+      html, body { margin: 0; background: #070a09; color: #f4f7f2; }
+      body {
+        font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+        -webkit-font-smoothing: antialiased;
+        line-height: 1.65;
+      }
+      main { max-width: 720px; margin: 0 auto; padding: 40px 22px 72px; }
+      a { color: #a3e635; }
+      h1 { font-size: 26px; letter-spacing: -0.01em; margin: 0 0 4px; }
+      h2 { font-size: 19px; margin: 34px 0 8px; }
+      p, li { color: rgba(244, 247, 242, 0.82); }
+      .muted { color: rgba(244, 247, 242, 0.5); font-size: 13px; }
+      .lang { margin: 0 0 26px; font-size: 13px; }
+      hr { border: none; border-top: 1px solid rgba(244, 247, 242, 0.12); margin: 48px 0; }
+      .home { display: inline-block; margin-bottom: 20px; font-size: 14px; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <a class="home" href="/">← Decision FC</a>
+      <p class="lang"><a href="#en">English</a> · <a href="#zh">简体中文</a></p>
+
+      <section id="en">
+        <h1>Privacy Policy</h1>
+        <p class="muted">Last updated: 18 September 2026</p>
+
+        <p>
+          Decision FC (“the game”, at <a href="https://decisionfc.com/">decisionfc.com</a>) is a
+          free browser football-career game. This policy explains what data the game handles and
+          how advertising works. It is written to be short and honest.
+        </p>
+
+        <h2>What the game stores</h2>
+        <p>
+          Your career progress, chosen settings, and language preference are stored
+          <strong>locally in your own browser</strong> (via <code>localStorage</code>). There is no
+          account and no login, and this information never leaves your device except as described
+          below. Clearing your browser storage erases it.
+        </p>
+
+        <h2>The leaderboard</h2>
+        <p>
+          If a finished career is submitted to a public ranking, only <em>gameplay</em> data is sent
+          — the random seed, the list of decisions you took, and the display name you typed for your
+          player. This is used to re-simulate the career for anti-cheat and to place it on the board.
+          Please do not type real personal information as a player name.
+        </p>
+
+        <h2>Counting how the game is played</h2>
+        <p>
+          The game keeps a small daily tally of seven things: a page being opened, a career being
+          started, a player being created, a career reaching its fifth season, a career being
+          finished, a replay being started, and a result being shared. It also counts crashes.
+        </p>
+        <p>
+          A tally is all it is. Each of those is one number per day for the whole site — "this many
+          careers were finished on the 14th" — and nothing is sent with it. There is no visitor or
+          session identifier, no cookie, no stored id, no device or browser details, no page path,
+          and nothing about your career. Two events from the same person cannot be linked to each
+          other, and no number in the tally can be traced back to anybody, including by us. It
+          exists to answer one question we could not otherwise answer: how many people start a
+          career and never finish one.
+        </p>
+        <p>
+          <strong>One thing does touch your address, and it is about abuse rather than
+          measurement.</strong> As with every request to every website, yours reaches the server
+          carrying your IP address. Neither the tally nor the leaderboard stores it. What the server
+          does instead is hash that address together with a secret key it generated itself, and keep
+          the hash — with a count, and nothing else beside it — for <strong>five minutes</strong>, so
+          that a single caller cannot flood the counters or the leaderboard. It is deleted once the
+          five minutes are up, it is never joined to a tally row or a leaderboard entry, and your
+          address itself is never written down.
+        </p>
+        <p>
+          If your browser sends <strong>Global Privacy Control</strong> or <strong>Do Not
+          Track</strong>, nothing is sent at all.
+        </p>
+
+        <h2>Advertising and cookies</h2>
+        <p>
+          The game is free and supported by rewarded video ads, served through
+          <strong>Google AdSense</strong>. Google and its partners use cookies and similar
+          identifiers to serve and measure ads, and — with consent — to personalise them. You can
+          read how Google uses this data at
+          <a href="https://policies.google.com/technologies/partner-sites">policies.google.com/technologies/partner-sites</a>,
+          and manage your ad personalisation at
+          <a href="https://adssettings.google.com/">adssettings.google.com</a>.
+        </p>
+        <p>
+          If you are in the <strong>European Economic Area, the United Kingdom, or Switzerland</strong>,
+          a consent prompt (a Google-certified consent management platform) asks your permission
+          before any personalised advertising cookies are used, and you can decline or choose
+          non-personalised ads. You can change your choice at any time through that prompt or your
+          browser settings.
+        </p>
+
+        <h2>Who else is involved</h2>
+        <ul>
+          <li><strong>Google AdSense</strong> — advertising.</li>
+          <li><strong>Cloudflare</strong> — hosting and content delivery for the site.</li>
+          <li><strong>Supabase</strong> — stores the leaderboard submissions and the daily counters
+              described above.</li>
+        </ul>
+        <p>These providers process only what is needed for their function.</p>
+
+        <h2>Children</h2>
+        <p>
+          The game is not directed at children under 13 (or the minimum age in your country), and it
+          does not knowingly collect personal information from them.
+        </p>
+
+        <h2>Your rights</h2>
+        <p>
+          You can erase all locally stored data by clearing your browser storage. If you are in a
+          region with data-protection rights (such as the EEA or UK), you may withdraw advertising
+          consent through the prompt above, and you may contact us about any data question.
+        </p>
+
+        <h2>Contact</h2>
+        <p>
+          Questions about this policy: <a href="mailto:daviesluo@gmail.com">daviesluo@gmail.com</a>.
+        </p>
+      </section>
+
+      <hr />
+
+      <section id="zh" lang="zh-Hans">
+        <h1>隐私政策</h1>
+        <p class="muted">最后更新：2026 年 9 月 18 日</p>
+
+        <p>
+          足球生涯 Decision FC（本游戏，网址 <a href="https://decisionfc.com/">decisionfc.com</a>）
+          是一款免费的网页足球生涯游戏。本政策说明游戏会处理哪些数据、广告是怎么运作的，尽量写得简短、诚实。
+        </p>
+
+        <h2>游戏会存什么</h2>
+        <p>
+          你的生涯进度、设置和语言偏好都<strong>只存在你自己浏览器本地</strong>（通过
+          <code>localStorage</code>）。游戏没有账号、不用登录，这些信息除下文说明的情况外不会离开你的设备。
+          清除浏览器存储即可删除。
+        </p>
+
+        <h2>排行榜</h2>
+        <p>
+          如果你把一段完成的生涯提交到公开排名，只会上传<em>游戏内</em>数据——随机种子、你做过的选择列表，
+          以及你为球员输入的显示名。这些用于服务器端重演该生涯做反作弊校验并计入排行榜。
+          请不要用真实个人信息作为球员名字。
+        </p>
+
+        <h2>关于游戏被怎么玩的计数</h2>
+        <p>
+          游戏会按天记七件事的总数：打开页面、开始一段生涯、创建球员、生涯打到第五个赛季、生涯完成、
+          开始重玩、分享战绩。另外还会记崩溃次数。
+        </p>
+        <p>
+          它就只是个计数。每一项都是全站每天一个数字——比如"14 号这天有多少段生涯完成了"——除此之外
+          什么都不会上传：没有访客或会话标识，没有 Cookie，没有存下来的 id，没有设备或浏览器信息，
+          没有页面路径，也没有任何生涯内容。同一个人的两次事件之间无法关联，这份计数里的任何数字都
+          追溯不到任何人，我们自己也一样。它的存在只为回答一个否则无法回答的问题：
+          有多少人开了一段生涯却从来没打完过。
+        </p>
+        <p>
+          <strong>只有一处会碰到你的地址，而它是为了防滥用，不是为了统计。</strong>和你访问任何网站一样，
+          你的请求到达服务器时会带着你的 IP 地址。计数不会存它，排行榜也不会。服务器做的是把这个地址
+          和一把它自己生成的密钥一起做单向哈希，只保留这个哈希值和一个次数，保留<strong>五分钟</strong>，
+          用来防止同一个来源刷计数或者刷排行榜。五分钟后即删除，它永远不会和某条计数或某条排行榜记录
+          关联起来，你的地址本身也从来不会被写下来。
+        </p>
+        <p>
+          如果你的浏览器发送 <strong>Global Privacy Control</strong> 或 <strong>Do Not Track</strong>
+          信号，那么什么都不会上传。
+        </p>
+
+        <h2>广告与 Cookie</h2>
+        <p>
+          本游戏免费，靠激励视频广告支持，通过 <strong>Google AdSense</strong> 投放。Google 及其合作伙伴会使用
+          Cookie 和类似标识来投放、衡量广告，并在获得同意后用于个性化广告。你可以在
+          <a href="https://policies.google.com/technologies/partner-sites">policies.google.com/technologies/partner-sites</a>
+          了解 Google 如何使用这些数据，并在
+          <a href="https://adssettings.google.com/">adssettings.google.com</a> 管理你的广告个性化设置。
+        </p>
+        <p>
+          如果你在<strong>欧洲经济区、英国或瑞士</strong>，在使用任何个性化广告 Cookie 之前，会先出现一个同意提示
+          （由 Google 认证的同意管理平台提供），你可以拒绝或选择非个性化广告，并可随时通过该提示或浏览器设置更改选择。
+        </p>
+
+        <h2>还涉及谁</h2>
+        <ul>
+          <li><strong>Google AdSense</strong>——广告。</li>
+          <li><strong>Cloudflare</strong>——网站托管与内容分发。</li>
+          <li><strong>Supabase</strong>——存储上文所述的排行榜提交数据与每日计数。</li>
+        </ul>
+        <p>这些服务商只处理其功能所必需的数据。</p>
+
+        <h2>儿童</h2>
+        <p>本游戏不面向 13 岁（或你所在国家的最低年龄）以下的儿童，也不会有意收集他们的个人信息。</p>
+
+        <h2>你的权利</h2>
+        <p>
+          清除浏览器存储即可删除所有本地数据。如果你所在地区有数据保护权利（例如欧盟或英国），
+          你可以通过上面的提示撤回广告同意，也可以就任何数据问题联系我们。
+        </p>
+
+        <h2>联系方式</h2>
+        <p>关于本政策的问题：<a href="mailto:daviesluo@gmail.com">daviesluo@gmail.com</a>。</p>
+      </section>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,89 @@
+{
+  "slug": "free-football-games-browser",
+  "lang": "en",
+  "title": "Free football games you can play in the browser — no download, no account",
+  "description": "What is actually worth playing in a browser tab: football manager sims, career games, clicker football and prediction games — what each one wants from you, and which fits five spare minutes.",
+  "h1": "Free football games in the browser, sorted by what they ask of you",
+  "intro": [
+    "Searching for a free football game to play in a browser turns up two kinds of result: enormous management sims that want a weekend, and reskinned clickers that want nothing at all and give nothing back. The useful question is not which is best — it is how much of your attention the game is asking for, and whether it gives you something in return.",
+    "This page sorts the honest options by that. It is written by the person who makes one of them, so read the last section knowing that; the rest is a straight description of what each kind of game does."
+  ],
+  "comparisonTitle": "The five kinds, and what each one wants",
+  "comparisonNote": "No downloads, no account, no console. Everything below runs in a tab.",
+  "comparison": [
+    {
+      "name": "Browser management sims",
+      "us": "You run a club: transfers, tactics, training, contracts, board expectations. Depth is the point, and a season is measured in hours.",
+      "them": "Worth it when you want the whole job. Wrong when you have a bus ride — most of them cannot be meaningfully picked up and put down."
+    },
+    {
+      "name": "Player-career games",
+      "us": "You are one footballer instead of the manager. Decisions rather than line-ups: which academy, whether to take the loan, the move that makes you or the one that pays you.",
+      "them": "Short, personal, and closer to a story than a spreadsheet. The category Decision FC is in."
+    },
+    {
+      "name": "Football clickers and idle games",
+      "us": "Numbers go up while you watch. Genuinely relaxing for ten minutes, and there is no real decision in them.",
+      "them": "Pick one if you want something to leave running. Do not expect it to feel like football."
+    },
+    {
+      "name": "Prediction and fantasy",
+      "us": "You forecast real fixtures and score points on what actually happened. Free, social, and tied to the real calendar.",
+      "them": "Excellent in season, dead in June. It is a companion to watching football rather than a substitute for it."
+    },
+    {
+      "name": "Arcade and penalty games",
+      "us": "Reflexes, one screen, thirty seconds. Free-kick trainers, penalty shootouts, header games.",
+      "them": "The right answer when you want your hands busy and your brain off."
+    }
+  ],
+  "sectionsTitle": "What to check before you spend an evening on one",
+  "sections": [
+    {
+      "title": "Does it save without an account?",
+      "body": "Browser games that store progress locally lose it when you clear your browser or switch device. Ones that require an account cost you an email and a password before you know whether you like it. The best compromise is a game short enough that losing a run does not matter."
+    },
+    {
+      "title": "Where are the adverts?",
+      "body": "A free browser game is paid for somehow. The honest version puts the advert at a break you chose — between runs, or in exchange for something — and never in the middle of what you are doing. A game that interrupts a match or a transfer to show you a video has told you what it thinks of your time."
+    },
+    {
+      "title": "Is it actually a decision?",
+      "body": "The quickest test of a management or career game: can you tell, before you click, why one option might be better than the other? If both branches read the same, or one is obviously right every time, you are not playing a game, you are pressing a button until it ends."
+    },
+    {
+      "title": "Does it work on a phone?",
+      "body": "Most browser football games are desktop layouts that technically load on a phone. If you have to pinch and scroll to read a table, it was not built for the device you are holding, and it will be miserable on a commute."
+    }
+  ],
+  "faqTitle": "Questions people ask",
+  "faq": [
+    {
+      "q": "What is the best free football game in a browser?",
+      "a": "It depends entirely on how long you have. For a weekend, a full management sim. For five minutes, a career game where each decision matters and the run ends. For no attention at all, an idle clicker. Anyone who answers this question without asking how long you have is selling you something."
+    },
+    {
+      "q": "Can I play without downloading or installing anything?",
+      "a": "Yes — everything on this page runs in a browser tab on a phone, tablet or computer. Some can be added to your home screen so they open like an app, which is still not an install."
+    },
+    {
+      "q": "Are free football games pay-to-win?",
+      "a": "Many are: the ones with squads to collect, energy bars and timers usually sell a way past them. The ones without collections — career games, prediction games, arcade games — have nothing to sell you, which is why they tend to be the honest end of the category."
+    },
+    {
+      "q": "What is a football career game?",
+      "a": "One where you are a single player rather than the manager. You make the choices a footballer's career is actually made of — the academy, the loan, the transfer, the country you represent, when to stop — and the seasons play out around them. It is closer to a story with numbers than to a management game."
+    },
+    {
+      "q": "Which one is Decision FC?",
+      "a": "A player-career game, and the short one. Twenty seasons take about five minutes. 191 real clubs across twelve countries, a squad role decided by ability rather than dice, three world leaderboards, and a daily challenge that gives everybody the same football world for a day. Free, no account, and the only advert is one you choose to watch when you replay."
+    },
+    {
+      "q": "Is it available in Chinese?",
+      "a": "Yes, and it is a rewrite rather than a translation — the cards read like Chinese football writing rather than translated English."
+    }
+  ],
+  "ctaTitle": "Five minutes, then",
+  "ctaBody": "One career, sixteen to retirement, in about the time this page took to read.",
+  "ctaLabel": "Play Decision FC"
+}

@@ -1,0 +1,30 @@
+Copyright © 2026 Davies Luo. All rights reserved.
+
+Decision FC (decisionfc.com) — its source code, its simulation engine, its
+world data, its original artwork and its written copy in English and Simplified
+Chinese — is proprietary. It is published so that it can be read. It is not
+open source.
+
+You may not copy, modify, distribute, sublicense, publish, sell or create
+derivative works from any part of this repository or from the compiled build it
+produces, in whole or in part, without prior written permission from the
+copyright holder. This includes republishing the game, or a build of it, on any
+other site or store, and includes using its source or its data to train or
+fine-tune a model intended to reproduce it.
+
+Two things are deliberately public and are not covered by the restriction above:
+the game is free to play at decisionfc.com, and the compiled build necessarily
+runs in the visitor's browser. Being able to read what your own browser
+downloaded is not a licence to redistribute it.
+
+Third-party material carries its own terms and is not licensed by this file:
+
+  · Club names, competition names and player names are used to describe real
+    football. Decision FC is not affiliated with, endorsed by or licensed by any
+    club, league or competition, and no claim of ownership is made over them.
+  · Club crests in apps/web/public/crests/ and trophy designs in
+    apps/web/public/trophies/ are trademarks of their respective owners and are
+    used with permission.
+  · Dependencies keep the licences declared in their own packages.
+
+Enquiries, including licensing: daviesluo@gmail.com
